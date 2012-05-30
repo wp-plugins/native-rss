@@ -3,7 +3,7 @@
 Plugin Name: Native RSS
 Plugin URI: http://wasistlos.waldemarstoffel.com/plugins-fur-wordpress/native-rss
 Description: This plugin will change the language tag of the blogfeeds from "en" to the native language of your WP-installation by default. You can however, change the feed-language in the settings, e.g. if your blog is running in french, but you publish in dutch. Nothing specific will change in the feed but your blog will be found easier by people using the language, you are actually writing in. Also it helps search engines to list your site correcly, if you provide the feed as a sitemap. 
-Version: 2.0
+Version: 2.1
 Author: Waldemar Stoffel
 Author URI: http://www.waldemarstoffel.com
 License: GPL3
