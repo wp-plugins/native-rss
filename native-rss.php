@@ -3,10 +3,11 @@
 Plugin Name: Native RSS
 Plugin URI: http://wasistlos.waldemarstoffel.com/plugins-fur-wordpress/native-rss
 Description: This plugin will change the language tag of the blogfeeds from "en" to the native language of your WP-installation by default. You can however, change the feed-language in the settings, e.g. if your blog is running in french, but you publish in dutch. Nothing specific will change in the feed but your blog will be found easier by people using the language, you are actually writing in. Also it helps search engines to list your site correcly, if you provide the feed as a sitemap. 
-Version: 2.0
+Version: 2.1
 Author: Waldemar Stoffel
 Author URI: http://www.waldemarstoffel.com
 License: GPL3
+Text Domain: native-rss
 */
 
 /*  Copyright 2011  Waldemar Stoffel  (email : stoffel@atelier-fuenf.de)
@@ -42,12 +43,25 @@ add_filter('plugin_row_meta', 'nrs_register_links',10,2);
 function nrs_register_links($links, $file) {
 	
 	$base = plugin_basename(__FILE__);
-	if ($file == $base) {
-		$links[] = '<a href="options-general.php?page=set-feed-language">'.__('Settings','native-rss').'</a>';
+	if ($file == $base) :
+		
 		$links[] = '<a href="http://wordpress.org/extend/plugins/native-rss/faq/" target="_blank">'.__('FAQ','native-rss').'</a>';
 		$links[] = '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GTBQ93W3FCKKC" target="_blank">'.__('Donate','native-rss').'</a>';
-	}
 	
+	endif;
+	
+	return $links;
+
+}
+
+add_filter('plugin_row_meta', 'nrs_register_links',10,2);
+
+function nrs_plugin_action_links( $links, $file ) {
+	
+	$base = plugin_basename(__FILE__);
+	
+	if ($file == $base) array_unshift($links, '<a href="'.admin_url( 'options-general.php?page=set-feed-language' ).'">'.__('Settings', 'native-rss').'</a>');
+
 	return $links;
 
 }
@@ -76,7 +90,7 @@ function nrs_display_field() {
 	
 	$rss_language = get_option('rss_language');
 	
-	echo "<input id=\"feed_language\" name=\"rss_language\" size=\"4\" type=\"text\" value=\"{$rss_language}\" />";
+	echo '<input id="feed_language" name="rss_language" size="4" type="text" value="'.$rss_language.'" />';
 	
 }
 
@@ -120,7 +134,7 @@ function nrs_options_page() {
     
     <div>
     <h2>Native RSS</h2>
-    
+    <?php settings_errors(); ?>
 	<?php _e('Customize the &#60;language&#62; tag of your feeds.', 'native-rss'); ?>
     
     <form action="options.php" method="post">
@@ -140,11 +154,13 @@ function nrs_validate($input) {
 	
 	$language = get_option('rss_language');
 	
-	if(!preg_match('/^[a-z]{2}$/i', $newinput)) {
+	if(!preg_match('/^[a-z]{2}$/i', $newinput)) :
 		
-		$newinput = $language;
+		add_settings_error('native_rss_setting', 'native-rss-error', __('Please give the two-letter ISO code of your language.', 'native-rss'), 'error');
 		
-	}
+		return;
+		
+	endif;
 
 return $newinput;
 

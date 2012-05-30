@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: RSS feed, RSS, feed, language, language settings, settings, SEO, native WP
 Requires at least: 2.7
 Tested up to: 3.4
-Stable tag: 2.0
+Stable tag: 2.1
 
 Changes the <language> tag of your feeds to the language you are publishing in.
 
@@ -12,7 +12,7 @@ Changes the <language> tag of your feeds to the language you are publishing in.
 
 The RSS-language will change the <language> tag of your feeds from the default ('en') to the language of your WP installation by default. In case you are e.g. using French as the WP language, but want to publish in Dutch, you can change the language in the settings section. Nothing specific will change in the feed but your blog will be found easier by people using the language, you are actually writing in. Also it helps search engines to list your site correcly, if you provide the feed as a sitemap. 
 
-The plugin was tested up to WP 3.1 and should work with versions down to 2.7 but was never tested with those.
+The plugin was tested up to WP 3.4 and should work with versions down to 2.7 but was never tested with those.
 
 == Installation ==
 
@@ -37,6 +37,10 @@ Empty the cache of your browser in that case. And reload the feed. The language 
 
 == Changelog ==
 
+= 2.1 =
+
+* Small bugfix
+
 = 2.0 =
 
 * Added some functionality to admin bar in WP 3.3beta (obsolete)
@@ -54,3 +58,7 @@ Nothing so far
 = 2.0 =
 
 Functionality for WP 3.3 added
+
+= 2.1 =
+
+Small bugfix
