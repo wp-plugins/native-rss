@@ -37,6 +37,10 @@ Empty the cache of your browser in that case. And reload the feed. The language 
 
 == Changelog ==
 
+= 2.1 =
+
+* Small bugfix
+
 = 2.0 =
 
 * Added some functionality to admin bar in WP 3.3beta (obsolete)
@@ -54,3 +58,7 @@ Nothing so far
 = 2.0 =
 
 Functionality for WP 3.3 added
+
+= 2.1 =
+
+Small bugfix
